@@ -1,0 +1,21 @@
+{
+  "name": "mvc-desafio-prefinal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.8.0",
+  "devDependencies": {
+    "@types/minimist": "^1.2.5",
+    "@types/node": "^22.14.0"
+  },
+  "dependencies": {
+    "jsonfile": "^6.1.0",
+    "minimist": "^1.2.8"
+  }
+}
