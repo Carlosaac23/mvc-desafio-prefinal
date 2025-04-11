@@ -1,7 +1,8 @@
-import { ProductCollection } from './models';
+import { ProductCollection, Product } from './models';
 
 export type MiCLIParams = {
-  search?: string;
+  search?: string | number;
+  add?: string;
 };
 
 class ProductController {
@@ -11,12 +12,22 @@ class ProductController {
     this.products = new ProductCollection();
   }
 
-  processOptions(options: MiCLIParams) {
+  async processOptions(options: MiCLIParams) {
     if (options.search) {
       return this.products.getById(Number(options.search));
-    } else {
-      return this.products.getAll();
     }
+
+    if (options.add) {
+      try {
+        const parsedProduct: Product = JSON.parse(options.add);
+        await this.products.addOne(parsedProduct);
+        return 'Producto agregado con exito';
+      } catch (error) {
+        return `Error al agregar producto ${(error as Error).message}`;
+      }
+    }
+
+    return this.products.getAll();
   }
 }
 
